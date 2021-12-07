@@ -1,0 +1,43 @@
+<!DOCTYPE html> <html lang="en"> 
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>Homework1-1</title>
+</head>
+<body>
+    <!-- พชรพล นกอยู่ -->
+    <div id='first'></div>
+    <div id='second'></div>
+    <div id='third'></div>
+    <div id='fourth'></div>
+</body>
+<script>
+    const first = document.getElementById('first');
+    const second = document.getElementById('second');
+    const third = document.getElementById('third');
+    const fourth = document.getElementById('fourth');
+
+    async function main() {
+        let promiseHead = axios.get('http://13.213.37.38:3000/await-hw/head.txt');
+        let promiseBody = axios.get('http://13.213.37.38:3000/await-hw/body.txt');
+        let promiseLeg = axios.get('http://13.213.37.38:3000/await-hw/leg.txt');
+        let promiseFeet = axios.get('http://13.213.37.38:3000/await-hw/feet.txt');
+
+        let head = await promiseHead;
+        let body = await promiseBody;
+        let leg = await promiseLeg;
+        let feet = await promiseFeet;
+
+        first.innerHTML = head.data;
+        second.innerHTML = body.data;
+        third.innerHTML = leg.data;
+        fourth.innerHTML = feet.data;
+    }
+
+    main();
+    
+</script>
+</html>
+    
