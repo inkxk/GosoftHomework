@@ -28,6 +28,8 @@
             border: 1px solid #888;
             width: 80%; /* Could be more or less, depending on screen size */
         }
+        
+        table, th, td {border:1px solid black;}
     </style>
 </head>
 <body>
@@ -85,7 +87,7 @@
         let promiseResponse = axios.get('http://13.213.37.38:3000/await-hw/data.json');
         const response = await promiseResponse;
         const table = 
-            `<table style="border: 1px solid black;">
+            `<table>
                 <tr>
                     <th>ID</th>
                     <th>First Name</th> 
