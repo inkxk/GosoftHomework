@@ -1,0 +1,4 @@
+enum Mode {
+    CUSTOMER,
+    MERCHANT
+}
