@@ -1,0 +1,67 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>Homework1-4</title>
+</head>
+<body>
+    <!-- พชรพล นกอยู่ -->
+    <div id="container">
+        <table id="table">
+
+        </table>
+    </div>
+</body>
+<script>
+
+    const header = {
+        headers: {
+            Authorization:
+            "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"
+        }
+    }
+
+    const getRepo = async () => {
+        let promiseResponse = axios.get('https://api.github.com/users/pariyathida/repos', header);
+        let response = await promiseResponse;
+        return response.data;
+    }
+
+    const getCommitList = async () => {
+        const data = await getRepo();
+        for (let row = 0; row < data.length; row++) {
+            getAuthor(data[row].commits_url.replace('{/sha}',''));
+        }
+    }
+
+    async function getAuthor(url) {
+        let promiseResponse = axios.get(url, header);
+        let response = await promiseResponse;
+        const data = response.data;
+        for (let row = 0; row < data.length; row++) {
+            if (data[row].author.login == null) {
+                console.log("committer is null.");
+            } else {
+                await createTable(data[row].author.login);
+            }  
+        }
+    }
+
+    function createTable(name) {
+        var tableBody = document.getElementById('table');
+        var newRow = tableBody.insertRow();
+        var newCell = newRow.insertCell();
+        var newText = document.createTextNode(name);
+        newCell.appendChild(newText);
+    }
+
+    async function main() {
+        await getCommitList();
+    }
+    main();
+
+</script>
+</html>
