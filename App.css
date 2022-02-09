@@ -1,0 +1,10 @@
+table {
+    border-collapse: collapse;
+    width: 2240px;
+    text-align: center;
+}
+
+.table-head {
+    height: 115px;
+    background-color: #E5E5E5;
+}
