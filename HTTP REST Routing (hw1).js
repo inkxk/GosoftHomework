@@ -43,6 +43,7 @@ app.get("/user", function (req, res, next) {
 
 app.get("/user/:id", function (req, res, next) {
     try {
+        const replaceId = req.params.id;
         const index = users.findIndex(function (val) {
             return val.id == replaceId;
         });
