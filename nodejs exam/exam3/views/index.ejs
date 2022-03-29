@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>exam3</title>
+        <style>
+            table,
+            th,
+            td {
+                border: 1px solid black;
+            }
+        </style>
+    </head>
+    <body>
+        <table style="margin: 20px">
+            <% for(let i=0; i<data.length; i++) { %>
+            <tr>
+                <td><%= data[i][0] %></td>
+                <td><%= data[i][1] %></td>
+
+                <td><%= data[i][2] %></td>
+                <td><%= data[i][3] %></td>
+                <td><%= data[i][4] %></td>
+            </tr>
+            <% } %>
+        </table>
+    </body>
+</html>

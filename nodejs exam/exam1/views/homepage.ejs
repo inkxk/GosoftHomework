@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>home</title>
+        <style>
+            table,
+            th,
+            td {
+                border: 1px solid black;
+            }
+        </style>
+    </head>
+    <body>
+        <h2><%= detail %></h2>
+        <h2>
+            <a href="/employee">Employee Data</a> |
+            <a href="/job-no-one">Job Data</a>
+        </h2>
+        <table style="margin: 20px">
+            <tr>
+                <td>
+                    <h3>ID</h3>
+                </td>
+                <td>
+                    <h3>FirstName</h3>
+                </td>
+                <td>
+                    <h3>LastName</h3>
+                </td>
+                <td>
+                    <h3>JobName</h3>
+                </td>
+                <td>
+                    <h3>Image</h3>
+                </td>
+            </tr>
+            <% for(let i=0; i<data.length; i++) { %>
+            <tr>
+                <td><%= data[i].id %></td>
+                <td><%= data[i].firstname %></td>
+
+                <td><%= data[i].lastname %></td>
+                <td><%= data[i].job_name %></td>
+                <td>
+                    <img
+                        src="/<%= data[i].job_name %>.jpg"
+                        width="100"
+                        height="100"
+                    />
+                </td>
+            </tr>
+            <% } %>
+        </table>
+    </body>
+</html>
